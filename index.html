@@ -23,43 +23,62 @@
         playerSelection = playerSelection.toLowerCase();
         if (playerSelection === "rock"){
             if (computerSelection === "rock"){
-                return "Tie!"
+                return "tie"
             }
             else if (computerSelection === "paper"){
-                return "You Lose! Paper Beats Rock"
+                return "lose"
             } 
             else{
-                return "You Win! Rock Beats Scissors"
+                return "win"
             }
 
         }
         if (playerSelection === "paper"){
             if (computerSelection === "rock"){
-                return "You Win! Paper beats Rock"
+                return "win"
             }
             else if (computerSelection === "paper"){
-                return "Tie!"
+                return "tie"
             } 
             else{
-                return "You Lose! Scissors Beats Paper"
+                return "lose"
             }
 
         }
         if (playerSelection === "scissors"){
             if (computerSelection === "rock"){
-                return "You Lose! Rock Beats Scissors"
+                return "lose"
             }
             else if (computerSelection === "paper"){
-                return "You Win! Scissors Beats Paper"
+                return "win"
             } 
             else{
-                return "Tie"
+                return "tie"
             }
 
         }
 
     }
-    console.log(playRound("rock", computerPlay()));
+    function game(){
+        let playerScore = 0;
+        let computerScore = 0;
+        let games = 0
+        while (games < 5){
+            let playerSelection = prompt("What do you choose?");
+            let result = playRound(playerSelection, computerPlay())
+            console.log(result);
+            if (result === "win"){
+                playerScore++;
+            }
+            else if (result === "lose"){
+                computerScore++;
+            }
+            games++;
+        }
+        console.log(`You score is ${playerScore}, and the computer score is ${computerScore}`);
+    }
+    game();
+
     
 </script>
 <body>
