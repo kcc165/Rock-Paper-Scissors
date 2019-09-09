@@ -67,31 +67,28 @@
                 }
         
             }
-            function game(){
-                let playerScore = 0;
-                let computerScore = 0;
+            function game(playerSelection){
                 let games = 0
-                while (games < 5){
-                    let playerSelection = prompt("What do you choose?");
-                    let result = playRound(playerSelection, computerPlay())
-                    console.log(result);
-                    if (result === "win"){
-                        playerScore++;
+                let result = playRound(playerSelection, computerPlay());
+                console.log(result);
+                if (result === "win"){
+                    scores[0]++;
                     }
-                    else if (result === "lose"){
-                        computerScore++;
+                else if (result === "lose"){
+                    scores[1]++;
                     }
-                    games++;
-                }
-                console.log(`You score is ${playerScore}, and the computer score is ${computerScore}`);
+                games++;
+               
+                console.log(`You score is ${scores[0]}, and the computer score is ${scores[1]}`);
             }
+            let scores = [0,0]
             const choice = document.querySelectorAll("img");
             choice.forEach((img) => {
                 img.addEventListener("click", (e) => {
-                    console.log(e.toElement.id);
+                    game(e.toElement.id);
                 });
             });
-            game();
+            
         
             
         </script>
